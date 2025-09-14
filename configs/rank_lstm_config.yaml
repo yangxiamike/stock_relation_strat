@@ -1,0 +1,31 @@
+data:
+  dataloader_args:
+    pin_memory: true
+  feature_path: data/feature_matrix.npy
+  relation_path: data/relation_embedding_sparse.npz
+  sequence_length: 16
+  split_info:
+    num_test: 182
+    num_train: 541
+    num_valid: 180
+    test_start_idx: 721
+    valid_start_idx: 541
+  use_relation: false
+model:
+  alpha_rank: 0.0
+  hidden_size: 64
+  num_features: 5
+training:
+  early_stopping_patience: 5
+  learning_rate: 0.01
+  max_epochs: 50
+  num_workers: 8
+  optimizer_args:
+    betas:
+    - 0.9
+    - 0.999
+    weight_decay: 0.0001
+  scheduler:
+    factor: 0.5
+    min_lr: 1.0e-05
+    patience: 5
