@@ -41,10 +41,11 @@ def classify_stock_exchange(stock_codes):
 
 def pre_adj_factor(df, ticker_price, ticker_factor):   
     if ticker_factor not in df.columns:
-        return df
+        df['adj_close'] = df[ticker_price]
+    else:
     # 计算前复权收盘价
-    newest_factor = df[ticker_factor].iloc[-1]
-    df['pre_adj_close'] = df[ticker_price] * df[ticker_factor] / newest_factor
+        newest_factor = df[ticker_factor].iloc[-1]
+        df['adj_close'] = df[ticker_price] * df[ticker_factor] / newest_factor
 
     return df
 
